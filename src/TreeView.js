@@ -122,10 +122,7 @@ export default class TreeView extends PureComponent {
     );
 
     return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator
-      >
+      
         <View
           style={{
             flexDirection: 'column',
@@ -138,7 +135,7 @@ export default class TreeView extends PureComponent {
             {rows}
           </ScrollView>
         </View>
-      </ScrollView>
+   
     );
   }
 }

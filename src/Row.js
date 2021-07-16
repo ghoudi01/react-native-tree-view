@@ -35,6 +35,7 @@ export class Row extends Component {
 
     this.isOpen = open;
     this.state = {
+      isOpen:open,
       angle: this.isOpen ? new Animated.Value(1) : new Animated.Value(0),
       maxHeight: this.isOpen ? new Animated.Value(MAX_HEIGHT) : new Animated.Value(0),
     }
@@ -42,6 +43,7 @@ export class Row extends Component {
 
   open = () => {
     this.isOpen = true;
+    this.setState({isOpen:true})
     Animated.parallel([
       Animated.sequence([
         Animated.timing(
@@ -71,6 +73,8 @@ export class Row extends Component {
   }
 
   close = () => {
+    this.setState({isOpen:false})
+
     this.isOpen = false;
     Animated.parallel([
       Animated.timing(
@@ -156,7 +160,8 @@ export class Row extends Component {
     return (
       <View
         style={{
-          flexDirection: 'column',
+      
+          width:"100%"
         }}
       >
         <TouchableOpacity
@@ -187,7 +192,7 @@ export class Row extends Component {
                       cell.cellStyle,
                     ]}
                   >
-                    {'renderRowCell' in cell ? cell.renderRowCell(data, this.isOpen) : null}
+                    {'renderRowCell' in cell ? cell.renderRowCell(data, this.state.isOpen) : null}
                   </View>
                 );
               })
